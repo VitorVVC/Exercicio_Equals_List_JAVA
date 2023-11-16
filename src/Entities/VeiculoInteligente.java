@@ -1,35 +1,35 @@
 package Entities;
 
 public abstract class VeiculoInteligente {
-    protected Double speed;
-    protected Double fuel;
-    protected Double maxFuel;
+    protected Double velocidade;
+    protected Double gasolina;
+    protected Double maxGasolina;
 
-    public VeiculoInteligente(Double maxFuel) {
-        this.speed = 0.0;
-        this.fuel = maxFuel;
-        this.maxFuel = maxFuel;
+    public VeiculoInteligente(Double maxGasolina) {
+        this.velocidade = 0.0;
+        this.gasolina = maxGasolina;
+        this.maxGasolina = maxGasolina;
     }
 
     public void partida() {
-        if (fuel > 0) {
-            speed = 10.0;
+        if (gasolina > 0) {
+            velocidade = 10.0;
             System.out.println("O veiculo está a 10km/h");
         } else {
             System.out.println("Veiculo sem combustivel por favor reabasteça");
         }
     }
-
+    public abstract void controlarVelocidade(boolean areaUrbana);
 
     public void parar() {
-        speed = 0.0;
+        velocidade = 0.0;
         System.out.println("O veiculo parou");
     }
-    public void abastecer(double quantidadeLitros) {
+    public void abastecer(Double quantidadeLitros) {
         if (quantidadeLitros > 0) {
-            if (fuel + quantidadeLitros <= maxFuel) {
-                fuel += quantidadeLitros;
-                System.out.println("Abastecimento concluido. Novo nivel de combustivel: " + fuel + " litros");
+            if (gasolina + quantidadeLitros <= maxGasolina) {
+                gasolina += quantidadeLitros;
+                System.out.println("Abastecimento concluido. Novo nivel de combustivel: " + gasolina + " litros");
             } else {
                 System.out.println("O tanque não suporta esta quantidade de combustivel");
             }
@@ -39,30 +39,31 @@ public abstract class VeiculoInteligente {
     }
     @Override
     public String toString() {
-        return String.format("O veiculo possue: %.2f como velocidade%Combustivel atual: %.2f%nMáximo de combustivel: %.2f%n", speed, fuel, maxFuel);
+        System.out.println("===========================");
+        return String.format("\nO veiculo está a: %.2fkm/h%nCombustivel atual: %.2f%nMáximo de combustivel: %.2f", velocidade, gasolina, maxGasolina);
     }
 
-    public Double getSpeed() {
-        return speed;
+    public Double getVelocidade() {
+        return velocidade;
     }
 
-    public void setSpeed(Double speed) {
-        this.speed = speed;
+    public void setVelocidade(Double velocidade) {
+        this.velocidade = velocidade;
     }
 
-    public Double getFuel() {
-        return fuel;
+    public Double getgasolina() {
+        return gasolina;
     }
 
-    public void setFuel(Double fuel) {
-        this.fuel = fuel;
+    public void setgasolina(Double gasolina) {
+        this.gasolina = gasolina;
     }
 
-    public Double getMaxFuel() {
-        return maxFuel;
+    public Double getmaxGasolina() {
+        return maxGasolina;
     }
 
-    public void setMaxFuel(Double maxFuel) {
-        this.maxFuel = maxFuel;
+    public void setmaxGasolina(Double maxGasolina) {
+        this.maxGasolina = maxGasolina;
     }
 }

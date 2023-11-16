@@ -9,19 +9,26 @@ public class MotorPower extends VeiculoInteligente {
         this.SUV = SUV;
     }
 
+    @Override
+    public String toString() {
+        String SUV = this.SUV ? "Sim" : "Não";
+        return String.format(super.toString() + "\nÉ uma SUV? " + SUV);
+    }
+
+    @Override
     public void controlarVelocidade(boolean areaUrbana) {
-        if (!SUV || speed < 25.0 || !areaUrbana) {
-            speed *= 2;
+        if (!SUV || velocidade < 25 || !areaUrbana) {
+            velocidade *= 2;
         }
     }
 
     @Override
-    public void abastecer(double quantidadeLitros) {
+    public void abastecer(Double quantidadeLitros) {
         super.abastecer(quantidadeLitros);
 
-        if (fuel < 10) {
-            fuel = maxFuel;
-            System.out.printf("Tanque de combustivel completo. Novo nivel: %s litros%n", fuel);
+        if (gasolina < 10) {
+            gasolina = maxGasolina;
+            System.out.printf("Tanque de combustivel completo. Novo nivel: %s litros%n", gasolina);
         }
     }
 

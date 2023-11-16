@@ -20,6 +20,32 @@ public class Administracao {
         listaVeiculos.remove(veiculo.equals(listaVeiculos));
     }
 
+    public List<VeiculoInteligente> veiculosMaior30(double valor) {
+        List<VeiculoInteligente> veiculosAcima30 = new ArrayList<>();
+
+        for (int i = 0; i < listaVeiculos.size(); i++) {
+            VeiculoInteligente teste = listaVeiculos.get(i);
+            if (teste.getVelocidade() > 30) {
+                veiculosAcima30.add(teste);
+            }
+        }
+        if (veiculosAcima30.isEmpty()) {
+            System.out.println("Nenhum veiculo acima de 30km/h");
+        }
+        return veiculosAcima30;
+    }
+
+    public void removerParado() {
+        for (int i = 0; i < listaVeiculos.size(); i++) {
+            VeiculoInteligente teste = listaVeiculos.get(i);
+            if (teste.getVelocidade() == 0.0) {
+                listaVeiculos.remove(teste);
+                System.out.println("Veiculo removido, nova quantidade de carros: " + listaVeiculos.size());
+            }
+        }
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
